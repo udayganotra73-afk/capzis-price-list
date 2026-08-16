@@ -7,730 +7,713 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CAPZIS | Live Price List</title>
+<title>CAPZIS | Premium Price List</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   BASIC RESET
-========================= */
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f7fb;
-    color:#172033;
+
+font-family:'Poppins',sans-serif;
+
+background:#eef4fb;
+
+color:#222;
+
+overflow-x:hidden;
+
 }
 
 
 /* =========================
-   HEADER
+BACKGROUND
 ========================= */
 
-.header{
-    background:#ffffff;
-    text-align:center;
-    padding:25px 20px 28px;
-    border-bottom:4px solid #1688d4;
-    box-shadow:0 3px 15px rgba(0,0,0,0.06);
-}
+body::before{
 
-.logo img{
-    width:190px;
-    max-width:75%;
-    height:auto;
-    display:block;
-    margin:auto;
-}
+content:"";
 
-.tagline{
-    margin-top:8px;
-    color:#536273;
-    font-size:14px;
-    letter-spacing:.5px;
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+radial-gradient(circle at top right,#7fd2ff33,transparent 35%),
+
+radial-gradient(circle at bottom left,#0077ff22,transparent 40%);
+
+z-index:-2;
+
 }
 
 
 /* =========================
-   BLUE BRAND BAR
+HERO
 ========================= */
 
-.brand-bar{
-    background:linear-gradient(135deg,#0b2340,#123f6d);
-    color:white;
-    padding:18px 20px;
-    text-align:center;
+.hero{
+
+position:relative;
+
+height:460px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+
+linear-gradient(135deg,#07182d,#103b68,#0a2648);
+
+overflow:hidden;
+
 }
 
-.brand-bar h1{
-    font-size:25px;
-    letter-spacing:.5px;
+
+/* BIG LOGO */
+
+.hero-logo{
+
+position:absolute;
+
+width:620px;
+
+opacity:.08;
+
+animation:floatLogo 10s ease-in-out infinite;
+
+pointer-events:none;
+
 }
 
-.brand-bar p{
-    margin-top:6px;
-    font-size:13px;
-    color:#dceeff;
+
+/* Overlay */
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,.18);
+
 }
 
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+/* Content */
+
+.hero-content{
+
+position:relative;
+
+z-index:5;
+
+text-align:center;
+
+color:white;
+
+padding:20px;
+
+}
+
+.hero-content h1{
+
+font-size:72px;
+
+font-weight:800;
+
+letter-spacing:8px;
+
+}
+
+.hero-content h2{
+
+margin-top:10px;
+
+font-size:30px;
+
+font-weight:500;
+
+color:#8fd9ff;
+
+}
+
+.hero-content p{
+
+margin-top:18px;
+
+font-size:18px;
+
+color:#d8edff;
+
+}
+
+.hero-btn{
+
+display:inline-block;
+
+margin-top:35px;
+
+padding:15px 42px;
+
+background:#12a7ff;
+
+color:white;
+
+text-decoration:none;
+
+font-weight:600;
+
+border-radius:50px;
+
+transition:.35s;
+
+box-shadow:0 10px 30px rgba(18,167,255,.35);
+
+}
+
+.hero-btn:hover{
+
+background:white;
+
+color:#0b2f57;
+
+transform:translateY(-4px);
+
+}
+
+
+/* Floating animation */
+
+@keyframes floatLogo{
+
+0%{
+
+transform:scale(.95) rotate(-2deg);
+
+}
+
+50%{
+
+transform:scale(1.02) rotate(2deg);
+
+}
+
+100%{
+
+transform:scale(.95) rotate(-2deg);
+
+}
+
+}
+
+
+/* Container */
 
 .container{
-    max-width:1150px;
-    margin:35px auto;
-    padding:0 20px;
-}
 
+max-width:1200px;
 
-/* =========================
-   TOP SECTION
-========================= */
+margin:auto;
 
-.top-section{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    margin-bottom:22px;
-}
-
-.title h2{
-    font-size:27px;
-    color:#102a43;
-}
-
-.title p{
-    margin-top:6px;
-    color:#718096;
-    font-size:14px;
-}
-
-
-/* =========================
-   SEARCH BOX
-========================= */
-
-.search-box{
-    width:290px;
-}
-
-.search-box input{
-    width:100%;
-    padding:13px 16px;
-    border:1px solid #d5dee8;
-    border-radius:10px;
-    outline:none;
-    font-size:14px;
-    background:#ffffff;
-    transition:.2s;
-}
-
-.search-box input:focus{
-    border-color:#1688d4;
-    box-shadow:0 0 0 3px rgba(22,136,212,.12);
-}
-
-
-/* =========================
-   PRICE CARD
-========================= */
-
-.price-card{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    border:1px solid #e3e9ef;
-    box-shadow:0 8px 30px rgba(20,50,80,.08);
-}
-
-
-/* =========================
-   TABLE
-========================= */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-thead{
-    background:#123f6d;
-    color:white;
-}
-
-th{
-    padding:16px;
-    text-align:left;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:.3px;
-}
-
-td{
-    padding:17px 16px;
-    border-bottom:1px solid #edf1f5;
-    font-size:14px;
-}
-
-tbody tr{
-    transition:.2s;
-}
-
-tbody tr:hover{
-    background:#f5faff;
-}
-
-
-/* =========================
-   PRODUCT DETAILS
-========================= */
-
-.product-id{
-    font-weight:bold;
-    color:#1688d4;
-}
-
-.product-name{
-    font-weight:600;
-    color:#26364a;
-}
-
-.specification{
-    color:#5f6f80;
-}
-
-
-/* =========================
-   PRICE
-========================= */
-
-.price{
-    font-size:18px;
-    font-weight:700;
-    color:#138a4b;
-}
-
-
-/* =========================
-   STATUS
-========================= */
-
-.status{
-    display:inline-block;
-    padding:5px 11px;
-    border-radius:20px;
-    background:#e9f8f0;
-    color:#138a4b;
-    font-size:12px;
-    font-weight:bold;
-}
-
-
-/* =========================
-   UPDATE INFO
-========================= */
-
-.updated{
-    color:#687789;
-    font-size:13px;
-}
-
-
-/* =========================
-   INFORMATION BOX
-========================= */
-
-.info-box{
-    margin-top:25px;
-    padding:18px 20px;
-    background:#ffffff;
-    border-left:4px solid #1688d4;
-    border-radius:8px;
-    box-shadow:0 4px 15px rgba(20,50,80,.05);
-}
-
-.info-box h3{
-    color:#123f6d;
-    font-size:16px;
-    margin-bottom:7px;
-}
-
-.info-box p{
-    color:#66788a;
-    font-size:13px;
-    line-height:1.6;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-    margin-top:45px;
-    background:#0b2340;
-    color:#c9d8e8;
-    text-align:center;
-    padding:25px 20px;
-    font-size:13px;
-}
-
-.footer strong{
-    color:white;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-    .header{
-        padding:20px 15px 24px;
-    }
-
-    .logo img{
-        width:155px;
-    }
-
-    .tagline{
-        font-size:12px;
-    }
-
-    .brand-bar h1{
-        font-size:21px;
-    }
-
-    .brand-bar p{
-        font-size:12px;
-    }
-
-    .container{
-        margin-top:25px;
-        padding:0 12px;
-    }
-
-    .top-section{
-        flex-direction:column;
-        align-items:stretch;
-    }
-
-    .title h2{
-        font-size:23px;
-    }
-
-    .search-box{
-        width:100%;
-    }
-
-    .price-card{
-        overflow-x:auto;
-    }
-
-    table{
-        min-width:760px;
-    }
+padding:45px 20px;
 
 }
 
 
-/* =========================
-   SMALL PHONE
-========================= */
+/* Mobile */
 
-@media(max-width:400px){
+@media(max-width:768px){
 
-    .logo img{
-        width:140px;
-    }
+.hero{
 
-    .brand-bar{
-        padding:15px;
-    }
-
-    .container{
-        padding:0 10px;
-    }
+height:320px;
 
 }
 
-</style>
+.hero-logo{
 
-</head>
+width:280px;
+
+}
+
+.hero-content h1{
+
+font-size:42px;
+
+letter-spacing:3px;
+
+}
+
+.hero-content h2{
+
+font-size:22px;
+
+}
+
+.hero-content p{
+
+font-size:14px;
+
+}
+
+}
+
+   /* ==========================
+TOP BAR
+========================== */
+
+.top-bar{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:15px 40px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(5,20,40,.55);
+
+backdrop-filter:blur(15px);
+
+z-index:999;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.brand{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+color:white;
+
+font-size:22px;
+
+font-weight:700;
+
+}
+
+.brand img{
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+}
+
+.nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+.nav a{
+
+color:white;
+
+text-decoration:none;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.nav a:hover{
+
+color:#52c5ff;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+margin-top:-80px;
+
+position:relative;
+
+z-index:20;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+transition:.3s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.stat-card h2{
+
+font-size:34px;
+
+color:#0077ff;
+
+}
+
+.stat-card p{
+
+margin-top:10px;
+
+color:#666;
+
+font-size:14px;
+
+}
+
+.section-title{
+
+margin-top:60px;
+
+margin-bottom:25px;
+
+font-size:34px;
+
+font-weight:700;
+
+text-align:center;
+
+color:#0b2f57;
+
+}
+
+.section-sub{
+
+text-align:center;
+
+color:#666;
+
+margin-bottom:35px;
+
+}
 
 
-<body>
+   <div class="search-box">
 
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search Product..."
+onkeyup="searchProduct()">
 
-<!-- =========================
-     LOGO HEADER
-========================= -->
+</div>
 
-<header class="header">
+<div class="table-box">
 
-    <div class="logo">
+<table id="priceTable">
 
-        <img
-            src="capzis-logo.png"
-            alt="CAPZIS Logo"
-        >
+<thead>
 
-    </div>
+<tr>
 
-    <div class="tagline">
-        Quality Capacitors • Reliable Performance
-    </div>
+<th>Product ID</th>
 
-</header>
+<th>Product Name</th>
 
+<th>Specification</th>
 
+<th>Price</th>
 
-<!-- =========================
-     BRAND BAR
-========================= -->
+<th>Status</th>
 
-<section class="brand-bar">
+<th>Updated</th>
 
-    <h1>
-        CAPZIS PRICE LIST
-    </h1>
+</tr>
 
-    <p>
-        Latest product prices and specifications
-    </p>
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>P001</td>
+
+<td>Capacitor 50MFD</td>
+
+<td>440V AC</td>
+
+<td class="price">₹100</td>
+
+<td>
+
+<span class="available">
+
+Available
+
+</span>
+
+</td>
+
+<td>16-08-2026</td>
+
+</tr>
+
+<tr>
+
+<td>P002</td>
+
+<td>Capacitor 36MFD</td>
+
+<td>440V AC</td>
+
+<td class="price">₹90</td>
+
+<td>
+
+<span class="available">
+
+Available
+
+</span>
+
+</td>
+
+<td>16-08-2026</td>
+
+</tr>
+
+<tr>
+
+<td>P003</td>
+
+<td>Capacitor 40MFD</td>
+
+<td>440V AC</td>
+
+<td class="price">₹95</td>
+
+<td>
+
+<span class="available">
+
+Available
+
+</span>
+
+</td>
+
+<td>16-08-2026</td>
+
+</tr>
+
+<tr>
+
+<td>P004</td>
+
+<td>Capacitor 45MFD</td>
+
+<td>440V AC</td>
+
+<td class="price">₹98</td>
+
+<td>
+
+<span class="available">
+
+Available
+
+</span>
+
+</td>
+
+<td>16-08-2026</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+   <!-- CONTACT SECTION -->
+
+<section class="contact-section">
+
+<h2>Contact CAPZIS</h2>
+
+<p>
+For bulk orders and dealer inquiries contact us directly.
+</p>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<h3>📞 Phone</h3>
+
+<p>+91 XXXXX XXXXX</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>📧 Email</h3>
+
+<p>info@capzis.com</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>📍 Address</h3>
+
+<p>Your Company Address</p>
+
+</div>
+
+</div>
 
 </section>
 
 
 
-<!-- =========================
-     MAIN CONTENT
-========================= -->
+<a
+href="https://wa.me/91XXXXXXXXXX"
+class="whatsapp"
+target="_blank">
 
-<main class="container">
+💬
 
+</a>
 
-    <!-- TOP -->
 
-    <div class="top-section">
 
-        <div class="title">
+<footer>
 
-            <h2>
-                Live Price List
-            </h2>
+<h2>CAPZIS</h2>
 
-            <p>
-                Check the latest CAPZIS product prices
-            </p>
+<p>
 
-        </div>
+Premium Capacitor Manufacturer
 
+</p>
 
-        <!-- SEARCH -->
+<p class="copy">
 
-        <div class="search-box">
+© 2026 CAPZIS • All Rights Reserved
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search product..."
-                onkeyup="searchProduct()"
-            >
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         PRICE TABLE
-    ========================= -->
-
-    <div class="price-card">
-
-        <table id="priceTable">
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        Product ID
-                    </th>
-
-                    <th>
-                        Product Name
-                    </th>
-
-                    <th>
-                        Specification
-                    </th>
-
-                    <th>
-                        Price
-                    </th>
-
-                    <th>
-                        Status
-                    </th>
-
-                    <th>
-                        Updated
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-
-                <!-- PRODUCT 1 -->
-
-                <tr>
-
-                    <td class="product-id">
-                        P001
-                    </td>
-
-                    <td class="product-name">
-                        Capacitor 50MFD
-                    </td>
-
-                    <td class="specification">
-                        440V AC • 50Hz
-                    </td>
-
-                    <td class="price">
-                        ₹100
-                    </td>
-
-                    <td>
-
-                        <span class="status">
-                            Available
-                        </span>
-
-                    </td>
-
-                    <td class="updated">
-                        16-08-2026
-                    </td>
-
-                </tr>
-
-
-
-                <!-- PRODUCT 2 -->
-
-                <tr>
-
-                    <td class="product-id">
-                        P002
-                    </td>
-
-                    <td class="product-name">
-                        Capacitor 36MFD
-                    </td>
-
-                    <td class="specification">
-                        440V AC • 50Hz
-                    </td>
-
-                    <td class="price">
-                        ₹90
-                    </td>
-
-                    <td>
-
-                        <span class="status">
-                            Available
-                        </span>
-
-                    </td>
-
-                    <td class="updated">
-                        16-08-2026
-                    </td>
-
-                </tr>
-
-
-
-                <!-- PRODUCT 3 -->
-
-                <tr>
-
-                    <td class="product-id">
-                        P003
-                    </td>
-
-                    <td class="product-name">
-                        Capacitor 40MFD
-                    </td>
-
-                    <td class="specification">
-                        440V AC • 50Hz
-                    </td>
-
-                    <td class="price">
-                        ₹95
-                    </td>
-
-                    <td>
-
-                        <span class="status">
-                            Available
-                        </span>
-
-                    </td>
-
-                    <td class="updated">
-                        16-08-2026
-                    </td>
-
-                </tr>
-
-
-
-                <!-- PRODUCT 4 -->
-
-                <tr>
-
-                    <td class="product-id">
-                        P004
-                    </td>
-
-                    <td class="product-name">
-                        Capacitor 45MFD
-                    </td>
-
-                    <td class="specification">
-                        440V AC • 50Hz
-                    </td>
-
-                    <td class="price">
-                        ₹98
-                    </td>
-
-                    <td>
-
-                        <span class="status">
-                            Available
-                        </span>
-
-                    </td>
-
-                    <td class="updated">
-                        16-08-2026
-                    </td>
-
-                </tr>
-
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-
-    <!-- =========================
-         INFORMATION
-    ========================= -->
-
-    <div class="info-box">
-
-        <h3>
-            Price Information
-        </h3>
-
-        <p>
-            Prices shown above are the latest available CAPZIS prices.
-            Please check this page regularly for price updates.
-        </p>
-
-    </div>
-
-
-</main>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="footer">
-
-    © 2026
-    <strong>CAPZIS</strong>
-    • All Rights Reserved
+</p>
 
 </footer>
 
-
-
-<!-- =========================
-     SEARCH JAVASCRIPT
-========================= -->
-
-<script>
+   <script>
 
 function searchProduct(){
 
-    let input =
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+let input=document.getElementById("searchInput").value.toLowerCase();
 
+let tr=document.querySelectorAll("#priceTable tbody tr");
 
-    let rows =
-        document
-        .getElementById("priceTable")
-        .getElementsByTagName("tbody")[0]
-        .getElementsByTagName("tr");
+tr.forEach(function(row){
 
+let text=row.innerText.toLowerCase();
 
-    for(let i = 0; i < rows.length; i++){
+if(text.indexOf(input)>-1){
 
-        let text =
-            rows[i].innerText.toLowerCase();
+row.style.display="";
 
+}else{
 
-        if(text.includes(input)){
-
-            rows[i].style.display = "";
-
-        }
-
-        else{
-
-            rows[i].style.display = "none";
-
-        }
-
-    }
+row.style.display="none";
 
 }
 
+});
+
+}
+
+
+// Smooth animation on scroll
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".stat-card,.contact-card,.table-box").forEach((el)=>{
+
+el.style.opacity="0";
+
+el.style.transform="translateY(40px)";
+
+el.style.transition="all .7s ease";
+
+observer.observe(el);
+
+});
+
 </script>
 
+</div>
 
 </body>
 
