@@ -30,8 +30,6 @@ document.getElementById("heading").innerText=data[lang].heading;
 
 document.getElementById("desc").innerText=data[lang].desc;
 
-document.getElementById("search").placeholder=data[lang].search;
-
 document.getElementById("t1").innerText=data[lang].product;
 
 document.getElementById("t2").innerText=data[lang].price;
