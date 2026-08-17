@@ -1,286 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CAPZIS | Live Price List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+<title>CAPZIS | Live Price Portal</title>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+<link rel="stylesheet" href="style.css">
 
-body{
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-background:linear-gradient(135deg,#081b45,#143b87);
-
-min-height:100vh;
-
-padding:25px;
-
-overflow-x:hidden;
-
-position:relative;
-
-}
-
-body::before{
-
-content:"CAPZIS";
-
-position:fixed;
-
-left:50%;
-
-top:50%;
-
-transform:translate(-50%,-50%) rotate(-28deg);
-
-font-size:180px;
-
-font-weight:900;
-
-color:#fff;
-
-opacity:.04;
-
-pointer-events:none;
-
-}
-
-.container{
-
-max-width:1150px;
-
-margin:auto;
-
-background:rgba(255,255,255,.12);
-
-backdrop-filter:blur(18px);
-
-border-radius:20px;
-
-padding:35px;
-
-box-shadow:0 20px 50px rgba(0,0,0,.35);
-
-}
-
-.header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:10px;
-
-}
-
-.logo{
-
-font-size:36px;
-
-font-weight:bold;
-
-color:white;
-
-}
-
-.lang button{
-
-padding:10px 18px;
-
-border:none;
-
-border-radius:8px;
-
-cursor:pointer;
-
-font-weight:bold;
-
-margin-left:5px;
-
-background:white;
-
-}
-
-.lang button:hover{
-
-background:#ffb300;
-
-}
-
-.subtitle{
-
-margin-top:8px;
-
-color:#ddd;
-
-font-size:18px;
-
-}
-
-.badge{
-
-display:inline-block;
-
-margin-top:18px;
-
-background:#00c853;
-
-padding:8px 18px;
-
-border-radius:50px;
-
-color:white;
-
-font-weight:bold;
-
-}
-
-.search{
-
-margin-top:25px;
-
-width:100%;
-
-padding:15px;
-
-font-size:16px;
-
-border:none;
-
-border-radius:10px;
-
-outline:none;
-
-}
-
-table{
-
-width:100%;
-
-margin-top:25px;
-
-border-collapse:collapse;
-
-overflow:hidden;
-
-border-radius:15px;
-
-background:white;
-
-}
-
-th{
-
-background:#0d47a1;
-
-color:white;
-
-padding:15px;
-
-}
-
-td{
-
-padding:14px;
-
-text-align:center;
-
-border-bottom:1px solid #ddd;
-
-}
-
-tr:hover{
-
-background:#edf4ff;
-
-}
-
-footer{
-
-margin-top:25px;
-
-text-align:center;
-
-color:white;
-
-opacity:.8;
-
-}
-
-@media(max-width:700px){
-
-.logo{
-
-font-size:28px;
-
-}
-
-.subtitle{
-
-font-size:15px;
-
-}
-
-table{
-
-font-size:13px;
-
-}
-
-}
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="background-logo">
+CAPZIS
+</div>
 
-<div class="header">
+<header>
 
-<div>
+<div class="logo">
 
-<div class="logo">CAPZIS</div>
+<h1>CAPZIS</h1>
 
-<div class="subtitle" id="subtitle">
-
-Electronic Components Live Price List
+<p id="subtitle">
+Electrical Products
+</p>
 
 </div>
 
-</div>
+<div class="language">
 
-<div class="lang">
+<button onclick="setLanguage('en')">
+English
+</button>
 
-<button onclick="english()">English</button>
-
-<button onclick="marathi()">मराठी</button>
-
-</div>
-
-</div>
-
-<div class="badge" id="updated">
-
-Last Updated : 17 Aug 2026
+<button onclick="setLanguage('mr')">
+मराठी
+</button>
 
 </div>
+
+</header>
+
+
+<section class="hero">
+
+<h2 id="heading">
+
+Live Product Price List
+
+</h2>
+
+<p id="desc">
+
+Always check the latest prices before placing an order.
+
+</p>
+
+</section>
+
+
+<div class="search-box">
 
 <input
 
-class="search"
+type="text"
 
 id="search"
 
@@ -288,109 +78,104 @@ placeholder="Search Product..."
 
 >
 
-<table id="table">
+</div>
+
+
+<div class="table-area">
+
+<table id="productTable">
+
+<thead>
 
 <tr>
 
-<th id="h1">Product ID</th>
+<th id="t1">
 
-<th id="h2">Product Name</th>
+Product
 
-<th id="h3">Price</th>
+</th>
 
-<th id="h4">Updated</th>
+<th id="t2">
+
+Price
+
+</th>
+
+<th id="t3">
+
+Updated
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+
+Capacitor 50 MFD
+
+</td>
+
+<td>
+
+₹85
+
+</td>
+
+<td>
+
+17 Aug 2026
+
+</td>
 
 </tr>
 
 <tr>
 
-<td>P001</td>
+<td>
 
-<td>Capacitor 50MFD</td>
+Open Well Panel 1 HP
 
-<td>₹100</td>
+</td>
 
-<td>17-08-2026</td>
+<td>
 
-</tr>
+₹230
 
-<tr>
+</td>
 
-<td>P002</td>
+<td>
 
-<td>Relay 12V</td>
+17 Aug 2026
 
-<td>₹75</td>
-
-<td>17-08-2026</td>
+</td>
 
 </tr>
+
+</tbody>
 
 </table>
 
+</div>
+
+
 <footer>
 
-© CAPZIS • Live Price Portal
+<p id="footer">
+
+© CAPZIS | Live Price Portal
+
+</p>
 
 </footer>
 
-</div>
 
-<script>
-
-document.getElementById("search").addEventListener("keyup",function(){
-
-let value=this.value.toLowerCase();
-
-let rows=document.querySelectorAll("#table tr");
-
-rows.forEach((row,index)=>{
-
-if(index==0)return;
-
-row.style.display=row.innerText.toLowerCase().includes(value)?"":"none";
-
-});
-
-});
-
-function english(){
-
-document.getElementById("subtitle").innerHTML="Electronic Components Live Price List";
-
-document.getElementById("updated").innerHTML="Last Updated : 17 Aug 2026";
-
-document.getElementById("search").placeholder="Search Product...";
-
-document.getElementById("h1").innerHTML="Product ID";
-
-document.getElementById("h2").innerHTML="Product Name";
-
-document.getElementById("h3").innerHTML="Price";
-
-document.getElementById("h4").innerHTML="Updated";
-
-}
-
-function marathi(){
-
-document.getElementById("subtitle").innerHTML="इलेक्ट्रॉनिक घटक थेट किंमत सूची";
-
-document.getElementById("updated").innerHTML="शेवटचे अद्यतन : १७ ऑगस्ट २०२६";
-
-document.getElementById("search").placeholder="उत्पादन शोधा...";
-
-document.getElementById("h1").innerHTML="उत्पादन आयडी";
-
-document.getElementById("h2").innerHTML="उत्पादनाचे नाव";
-
-document.getElementById("h3").innerHTML="किंमत";
-
-document.getElementById("h4").innerHTML="अद्यतन";
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
